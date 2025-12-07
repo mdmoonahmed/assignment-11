@@ -12,9 +12,9 @@ const getLinkStyle = ({ isActive }) => {
 
 const Navbar = () => {
     const links = <>
-        <li><NavLink to="/" style={getLinkStyle}>Home</NavLink></li>
-        <li><NavLink to="/meals" style={getLinkStyle}>Meals</NavLink></li>
-        <li><NavLink to="/dashboard" style={getLinkStyle}>Dashboard</NavLink></li>
+        <li><NavLink className="font-semibold" to="/" style={getLinkStyle}>Home</NavLink></li>
+        <li><NavLink className="font-semibold" to="/meals" style={getLinkStyle}>Meals</NavLink></li>
+        <li><NavLink className="font-semibold" to="/dashboard" style={getLinkStyle}>Dashboard</NavLink></li>
     </>;
 
     return (
@@ -23,7 +23,7 @@ const Navbar = () => {
                 {/* Logo / Brand */}
                 <div className="navbar-start">
                     <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden text-text-primary">
+                        <label tabIndex={0} className="btn btn-ghost lg:hidden t-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> 
                             </svg>
@@ -32,7 +32,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-2xl font-display t-accent normal-case">Chef Hut</a>
+                    <a className="header-text  text-2xl md:text-3xl font-display t-accent normal-case">Chef Hut</a>
                 </div>
 
                 {/* Desktop Links */}
@@ -44,8 +44,8 @@ const Navbar = () => {
 
                 {/* CTA Button */}
                 <div className="navbar-end">
-                    <button className="b-g-accent text-black rounded-md px-4 py-2 hover:brightness-105 transition">
-                        Order Now
+                    <button className="b-g-accent text-black font-bold rounded-md px-4 py-2 hover:brightness-105 transition">
+                       Login
                     </button>
                 </div>
             </div>

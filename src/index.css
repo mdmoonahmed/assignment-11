@@ -30,6 +30,7 @@
 
 p{
     color: #A1A1AA;
+
 }
 
 body {
@@ -41,5 +42,4 @@ body {
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
   font-weight: bold;
-  font-style: normal;
 }
