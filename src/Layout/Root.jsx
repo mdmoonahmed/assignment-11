@@ -7,8 +7,10 @@ const Root = () => {
 
   
     return (
-        <div className=' mx-auto'>
-            <Navbar />
+        <div className='relative mx-auto'>
+            <div className='sticky top-0 z-50'>
+               <Navbar  />
+            </div>
             <Outlet />
             <Footer />  
         

@@ -28,7 +28,7 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="b-g-surface mt-12 py-16 px-4">
+    <section className="b-g-main mt-12 py-16 px-4">
       <div className="max-w-6xl mx-auto text-center mb-12">
         <motion.h2
           className="header-text t-primary text-3xl md:text-4xl mb-4"
@@ -52,7 +52,7 @@ const WhyChooseUs = () => {
         {features.map((feature, index) => (
           <motion.div
             key={index}
-            className="b-g-main b-subtle p-6 rounded-xl shadow-md text-center flex flex-col items-center"
+            className="b-g-surface b-subtle p-6 rounded-xl shadow-md text-center flex flex-col items-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}

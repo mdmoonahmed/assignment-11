@@ -107,16 +107,16 @@ const Navbar = () => {
               </button>
 
               {isOpen && (
-                <div className="absolute right-0 mt-2 w-56 rounded-lg bg-gray-900 text-white shadow-lg ring-1 ring-yellow-500 z-20">
+                <div className="absolute right-0 mt-2 w-56 rounded-lg b-g-surface text-white shadow-lg ring-1 ring-yellow-500 z-20">
                   <div className="px-4 py-3 border-b border-gray-700">
-                    <p className="text-sm font-semibold">{user.displayName}</p>
-                    <p className="text-xs text-gray-400 truncate">
-                      {user.email}
+                    <p className="t-primary font-semibold">
+                      {user.displayName}
                     </p>
+                    <p className="text-xs t-muted truncate">{user.email}</p>
                   </div>
                   <button
                     onClick={handleLogOut}
-                    className="w-full flex items-center gap-1 justify-center  text-center px-4 py-3 text-sm font-semibold hover:bg-white b-g-accent rounded-md hover:text-black transition duration-200"
+                    className="w-full text-black flex items-center gap-1 justify-center  text-center px-4 py-3 text-sm font-semibold b-g-accent rounded-md hover:brightness-105 hover:text-gray-300 transition duration-200"
                   >
                     Log Out
                   </button>
