@@ -30,7 +30,7 @@ const Home = () => {
 
         {/* Meals Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {meals.slice(0, 6).map((meal) => (
+          {meals.map((meal) => (
             <MealCard key={meal._id} meal={meal} />
           ))}
         </div>

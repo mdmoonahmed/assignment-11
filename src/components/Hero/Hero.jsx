@@ -148,7 +148,7 @@ const Hero = ({
             className="lg:col-span-6 relative flex justify-center lg:justify-end"
             aria-hidden={false}
           >
-            <div className="w-full max-w-[520px] b-g-surface rounded-2xl overflow-hidden shadow-lg border" style={{ borderColor: "var(--b-subtle)" }}>
+            <div className="w-full max-w-[520px] b-g-surface rounded-2xl overflow-hidden shadow-lg  b-subtle">
               {/* image with aspect ratio */}
               <div className="relative" style={{ paddingBottom: "66.66%" /* 3:2 */ }}>
                 <img
