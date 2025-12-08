@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "../../components/Hero/Hero";
 import MealCard from "../../components/Card/MealCard";
 import { useLoaderData } from "react-router-dom";
+import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
 
 const Home = () => {
   const meals = useLoaderData();
@@ -35,6 +36,7 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <WhyChooseUs></WhyChooseUs>
     </div>
   );
 };

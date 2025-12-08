@@ -26,8 +26,6 @@ const MealCard = ({ meal }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      
-      r
       whileHover={{ 
         scale: 1.03, 
         boxShadow: "0px 0px 15px rgba(201, 162, 77, 0.7)", 

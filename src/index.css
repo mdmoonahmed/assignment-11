@@ -63,6 +63,6 @@ body {
     100% { transform: scale(1.1); }
   }
   .animate-zoomImg:hover {
-    animation: zoomBg 2s ease-in-out both;
+    animation: zoomBg .9s ease-in-out both;
   }
 }
