@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import logo from "../../assets/Gemini_Generated_Image_4e0w984e0w984e0w-removebg-preview.png";
+import logo from "../../assets/logo.png";
 import useAuth from "../../Hooks/useAuth";
 
 // Active link style function
@@ -18,7 +18,7 @@ const Navbar = () => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
   console.log(user);
-  
+
   const handleLogIn = () => navigate("/login");
   const handleLogOut = () => {
     signOutUser().then(() => {
@@ -39,11 +39,17 @@ const Navbar = () => {
           Meals
         </NavLink>
       </li>
-      <li>
-        <NavLink className="font-semibold" to="/dashboard" style={getLinkStyle}>
-          Dashboard
-        </NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink
+            className="font-semibold"
+            to="/dashboard"
+            style={getLinkStyle}
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
     </>
   );
 
@@ -121,8 +127,8 @@ const Navbar = () => {
             <button
               onClick={handleLogIn}
               className="b-g-accent text-black font-bold rounded-md px-4 py-2 hover:brightness-105 transition"
-            >       
-                Login
+            >
+              Login
             </button>
           )}
         </div>

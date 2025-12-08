@@ -43,7 +43,7 @@ const Register = () => {
       };
 
       // 3) save user to  backend
-      const res = await axiosSecure.post("/users", userInfo);
+      const res = await axiosSecure.post("http://localhost:3000/users", userInfo);
 
       //  check server response
       if (res?.data?.insertedId || res?.data?.acknowledged) {
@@ -53,7 +53,7 @@ const Register = () => {
           photoURL: photoUrl || "",
         };
 
-        await updateUserProfile(userProfile);
+        await updateUserProfile(userProfile.displayName,userProfile.photoURL);
 
         // 5) navigate to previous location or home/dashboard
         const dest =
@@ -94,7 +94,7 @@ const Register = () => {
                 required: "Name is required",
                 minLength: { value: 2, message: "Enter your full name" },
               })}
-              placeholder="Ariana Sultana"
+              placeholder="Enter your name"
               aria-invalid={errors.name ? "true" : "false"}
               className="w-full bg-transparent b-subtle t-primary px-4 py-2 rounded-md focus:outline-none"
             />
