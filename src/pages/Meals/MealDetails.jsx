@@ -1,10 +1,11 @@
 // src/pages/Meals/MealDetails.jsx
-import React, { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hooks/useAxios";
 import useAuth from "../../Hooks/useAuth";
 import Loader from "../../components/Loader/Loader";
+import { toast } from "react-toastify";
 
 const formatDate = (iso) => {
   try {
@@ -19,6 +20,10 @@ const MealDetails = () => {
   const api = useAxios();
   const navigate = useNavigate();
   const { user } = useAuth();
+
+  // favorite UI state
+  const [favLoading, setFavLoading] = useState(false);
+  const [favMessage, setFavMessage] = useState("");
 
   /****Meal Query*****/
   const {
@@ -64,8 +69,8 @@ const MealDetails = () => {
 
     const reviewDoc = {
       foodId: id,
-      reviewerName: user.displayName || "Anonymous",
-      reviewerImage: user.photoURL || "",
+      reviewerName: user?.displayName || "Anonymous",
+      reviewerImage: user?.photoURL || "",
       rating: Number(rating),
       comment,
     };
@@ -73,7 +78,46 @@ const MealDetails = () => {
     await api.post("/reviews", reviewDoc);
 
     form.reset();
-    refetch(); 
+    refetch();
+  };
+
+  // ---------- Favorites handler ----------
+  const handleAddFavorite = async () => {
+
+    if (!meal) return;
+
+    setFavLoading(true);
+    setFavMessage("");
+
+    const payload = {
+      userEmail: user.email,
+      mealId: String(id),
+      mealName: meal.foodName || "",
+      chefId: String(meal.chefId || ""),
+      chefName: meal.chefName || "",
+      price: Number(meal.price || 0),
+    };
+
+    try {
+      const res = await api.post("/favorites", payload);
+      toast.success("Added to favorites❤️",{
+        theme:'dark'
+      })
+      // success
+      setFavMessage("Added to favorites ❤️");
+    } catch (err) {
+      // handle duplicate (unique index)
+      const status = err?.response?.status;
+      if (status === 409) {
+        setFavMessage("This meal is already in your favorites.");
+      } else {
+        setFavMessage("Failed to add favorite. Try again.");
+        console.error("Add favorite error:", err);
+      }
+    } finally {
+      setFavLoading(false);
+      setTimeout(() => setFavMessage(""), 3000);
+    }
   };
 
   if (isLoading) {
@@ -138,13 +182,20 @@ const MealDetails = () => {
                 Order Now
               </button>
             </div>
-            <div>
+
+            {/* Favorite button */}
+            <div className="mt-2">
               <button
-                onClick={() => navigate("/meals")}
-                className="w-full b-subtle t-primary py-2 rounded-md mt-2"
+                onClick={handleAddFavorite}
+                disabled={favLoading}
+                className={`w-full ${favLoading ? "opacity-60 cursor-not-allowed" : ""} b-subtle t-primary py-2 rounded-md`}
               >
-                Back to Meals
+                {favLoading ? "Adding..." : "Add to Favorites"}
               </button>
+
+              {favMessage && (
+                <p className="t-accent text-sm mt-2 text-center">{favMessage}</p>
+              )}
             </div>
           </div>
         </div>

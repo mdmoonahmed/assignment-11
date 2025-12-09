@@ -4,6 +4,7 @@ import MealCard from "../../components/Card/MealCard";
 import { useLoaderData } from "react-router-dom";
 import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
 import useTitles from '../../Hooks/useTitles';
+import CustomerReviews from "../../components/CustomerReview/CustomerReview";
 
 const Home = () => {
   useTitles("Home | ChefHut")
@@ -38,6 +39,7 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <CustomerReviews></CustomerReviews>
       <WhyChooseUs></WhyChooseUs>
     </div>
   );

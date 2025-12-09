@@ -36,7 +36,7 @@ const Login = () => {
       // await axiosSecure.post('/api/auth/exchange', { idToken });
 
       // 3) redirect to intended page or dashboard
-      const dest = (location.state && location.state.from) || "/dashboard";
+      const dest = location.state || "/dashboard";
       navigate(dest, { replace: true });
     } catch (err) {
       const msg = err?.response?.data?.message || err?.message || "Login failed. Please check your credentials.";
