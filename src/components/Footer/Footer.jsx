@@ -1,88 +1,62 @@
 import React from "react";
 import {
-  FaFacebookF,
   FaInstagram,
-  FaTwitter,
-  FaLinkedinIn,
 } from "react-icons/fa";
+import { FaLinkedin, FaSquareFacebook, FaSquareXTwitter } from "react-icons/fa6";
 import logo from "../../assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="b-g-surface py-12 px-6 border-t">
-      <div className="max-w-6xl  mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-        {/* Logo and Description */}
-        <div className="flex flex-col items-start md:items-start">
+    <footer className="b-g-surface pt-14">
+      
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        
+        {/* Logo + Intro */}
+          <div className="flex flex-col items-start md:items-start">
           <div className="mb-4">
+            {/* Replace with your logo */}
             <img src={logo} alt="LocalChefBazaar Logo" className="h-10" />
           </div>
           <p className="t-muted max-w-xs text-sm">
-            Chef Hut brings fresh, home-cooked meals from expert chefs straight
-            to your doorstep.
+            Chef Hut brings fresh, home-cooked meals from expert chefs straight to your doorstep.
           </p>
         </div>
 
-        {/* Navigation Links */}
-        <div className="flex flex-col sm:flex-row gap-8">
-          <div className="flex flex-col gap-2">
-            <h4 className="t-primary font-semibold mb-2">Company</h4>
-            <a href="/" className="t-muted hover-accent text-sm">
-              Home
-            </a>
-            <a href="/meals" className="t-muted hover-accent text-sm">
-              Meals
-            </a>
-            <a href="/about" className="t-muted hover-accent text-sm">
-              About Us
-            </a>
-            <a href="/contact" className="t-muted hover-accent text-sm">
-              Contact
-            </a>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <h4 className="t-primary font-semibold mb-2">Support</h4>
-            <a href="/" className="t-muted hover-accent text-sm">
-              FAQ
-            </a>
-            <a href="/" className="t-muted hover-accent text-sm">
-              Help Center
-            </a>
-            <a href="/" className="t-muted hover-accent text-sm">
-              Terms & Conditions
-            </a>
-            <a href="/" className="t-muted hover-accent text-sm">
-              Privacy Policy
-            </a>
-          </div>
+        {/* Contact Details */}
+        <div>
+          <h4 className="t-primary font-semibold mb-4">Contact</h4>
+          <p className="t-muted text-sm mb-2">📍 Dhaka, Bangladesh</p>
+          <p className="t-muted text-sm mb-2">📧 support@localchefbazaar.com</p>
+          <p className="t-muted text-sm">📞 +880 1234-567890</p>
         </div>
 
-        {/* Social Icons */}
-        <div className="flex flex-col gap-4 mt-4 md:mt-0">
-          <h4 className="t-primary font-semibold mb-2">Follow Us</h4>
+        {/* Working Hours */}
+        <div>
+          <h4 className="t-primary font-semibold mb-4">Working Hours</h4>
+          <p className="t-muted text-sm mb-2">Sat – Thu: 10:00 AM – 10:00 PM</p>
+          <p className="t-muted text-sm">Friday: Closed</p>
+        </div>
+
+        {/* Social Media */}
+        <div>
+          <h4 className="t-primary font-semibold mb-4">Follow Us</h4>
           <div className="flex gap-4">
-            <a href="#" className="t-muted hover-accent">
-              <FaFacebookF />
-            </a>
-            <a href="#" className="t-muted hover-accent">
-              <FaInstagram />
-            </a>
-            <a href="#" className="t-muted hover-accent">
-              <FaTwitter />
-            </a>
-            <a href="#" className="t-muted hover-accent">
-              <FaLinkedinIn />
-            </a>
+            <a href="https://www.facebook.com/" className="t-muted hover-accent transition"><FaSquareFacebook /></a>
+            <a href="https://www.instagram.com/" className="t-muted hover-accent transition"><FaInstagram /></a>
+            <a href="https://www.x.com/" className="t-muted hover-accent transition"><FaSquareXTwitter/></a>
+            <a href="https://www.linkedin.com/" className="t-muted hover-accent transition"><FaLinkedin/></a>
           </div>
         </div>
+
       </div>
 
-      {/* Bottom Section */}
-      <div className="mt-10 border-t border-[#23232A] pt-6 text-center">
+      {/* Bottom Bar */}
+      <div className="mt-12 border-t border-[#23232A] py-6 text-center">
         <p className="t-muted text-sm">
-          &copy; {new Date().getFullYear()} Moon Ahmed. All rights reserved.
+          © {new Date().getFullYear()} LocalChefBazaar. All rights reserved.
         </p>
       </div>
+
     </footer>
   );
 };

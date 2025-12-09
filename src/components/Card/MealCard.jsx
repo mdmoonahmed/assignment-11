@@ -62,7 +62,7 @@ const MealCard = ({ meal }) => {
         <div className="flex justify-between items-center mb-2">
           <span className="t-accent font-semibold">৳{price}</span>
          
-          <span className="t-muted flex items-center">{rating} <Star className="w-4 h-4 ml-1" fill="#C9A24D" /></span>
+          <span className="t-muted flex items-center">{rating} <Star className="w-4 h-4 ml-1 t-accent" fill="#C9A24D" /></span>
         </div>
 
         <p className="t-muted text-sm mb-3">

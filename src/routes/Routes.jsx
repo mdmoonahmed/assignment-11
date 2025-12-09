@@ -3,7 +3,6 @@ import { createBrowserRouter } from "react-router-dom";
 
 import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/Error/ErrorPage";
-import Meals from "../pages/Meals/Meals";
 import UserDashboard from "../pages/Dashboard/UserDashboard";
 import Root from "../Layout/Root";
 import Login from "../pages/Auth/Login";
@@ -11,6 +10,7 @@ import Register from "../pages/Auth/Register";
 import PrivateRoutes from "./PrivateRoutes";
 import Loading from "../components/Loader/Loader";
 import MealDetails from "../pages/Meals/MealDetails";
+import MealsPage from "../pages/Meals/MealsPage";
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/meals",
-        element: <Meals></Meals>,
+        element: <MealsPage></MealsPage>
       },
       {
         path: "/mealDetails/:id",
