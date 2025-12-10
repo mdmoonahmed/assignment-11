@@ -1,9 +1,15 @@
 // src/layouts/DashboardDrawer.jsx
 import React, { useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import useRole from "../Hooks/useRole";
 import logo from '../assets/logo.png';
+import { TbPackage, TbTruckDelivery } from "react-icons/tb";
+import { FaCommentDots, FaHeart, FaHistory } from "react-icons/fa";
+import { GiHotMeal, GiMeal } from "react-icons/gi";
+import { FaBellConcierge } from "react-icons/fa6";
+import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import { MdManageAccounts } from "react-icons/md";
 
 /**
  * DashboardDrawer
@@ -82,11 +88,12 @@ const IconUsers = () => (
   </svg>
 );
 
-const DashboardDrawer = ({ children }) => {
+const DashboardDrawer = () => {
   const checkboxId = "dashboard-drawer-toggle";
   const checkboxRef = useRef(null);
   const { user } = useAuth();
-  const { role } = useRole();
+  const { role} = useRole();
+  
   return (
     <div className="drawer lg:drawer-open">
       {/* hidden checkbox controls drawer */}
@@ -154,7 +161,7 @@ const DashboardDrawer = ({ children }) => {
         </nav>
 
         {/* page content */}
-        <div className="p-4">{children}</div>
+        <div className="p-4"><Outlet></Outlet></div>
       </div>
 
       {/* Sidebar */}
@@ -169,16 +176,16 @@ const DashboardDrawer = ({ children }) => {
           {/* top logo area */}
           <div className="w-full px-3 py-4 flex items-center gap-3">
             {/* <div className="w-10 h-10 rounded-md b-g-accent flex items-center justify-center text-black font-bold"> */}
-              <img className="h-10" src={logo} alt="" />
+             <Link to="/"> <img className="h-10" src={logo} alt="" /> </Link>
             {/* </div> */}
             <div className="is-drawer-close:hidden">
-              <div className="header-text t-accent">ChefHut</div>
-              <div className="t-muted text-xs">{role || 'user'}</div>
+              <Link to="/" className="header-text t-accent">ChefHut</Link>
+              <div className="t-muted text-xs">Dashboard</div>
             </div>
           </div>
 
           {/* nav */}
-          <ul className="menu w-full t-primary grow px-1">
+          <ul className="menu dashboard w-full t-primary grow px-1">
             {/* ===== COMMON ===== */}
             <li>
               <NavLink
@@ -199,14 +206,14 @@ const DashboardDrawer = ({ children }) => {
 
             <li>
               <NavLink to="/dashboard/my-orders">
-                <IconOrders />
+                <TbTruckDelivery  />
                 <span className=" is-drawer-close:hidden">My Orders</span>
               </NavLink>
             </li>
 
             <li>
               <NavLink to="/dashboard/favorites">
-                <IconMeals />
+                <FaHeart />
                 <span className=" is-drawer-close:hidden">Favorites</span>
               </NavLink>
             </li>
@@ -216,7 +223,7 @@ const DashboardDrawer = ({ children }) => {
               <>
                 <li>
                   <NavLink to="/dashboard/order-history">
-                    <IconOrders />
+                    <FaHistory />
                     <span className=" is-drawer-close:hidden">
                       Order History
                     </span>
@@ -225,7 +232,7 @@ const DashboardDrawer = ({ children }) => {
 
                 <li>
                   <NavLink to="/dashboard/reviews">
-                    <IconMeals />
+                    <FaCommentDots/>
                     <span className=" is-drawer-close:hidden">My Reviews</span>
                   </NavLink>
                 </li>
@@ -235,34 +242,34 @@ const DashboardDrawer = ({ children }) => {
             {/* ===== CHEF ===== */}
             {role === "chef" && (
               <>
-                <li className="menu-title  is-drawer-close:hidden">
+                <li className="menu-title   t-accent rounded-sm  is-drawer-close:hidden">
                   <span>Chef Panel</span>
                 </li>
 
                 <li>
                   <NavLink to="/dashboard/add-meal">
-                    <IconMeals />
+                    <GiHotMeal />
                     <span className=" is-drawer-close:hidden">Add Meal</span>
                   </NavLink>
                 </li>
 
                 <li>
                   <NavLink to="/dashboard/my-meals">
-                    <IconMeals />
+                    <GiMeal />
                     <span className=" is-drawer-close:hidden">My Meals</span>
                   </NavLink>
                 </li>
 
                 <li>
                   <NavLink to="/dashboard/meal-orders">
-                    <IconOrders />
+                    <FaBellConcierge/>
                     <span className=" is-drawer-close:hidden">Meal Orders</span>
                   </NavLink>
                 </li>
 
                 <li>
                   <NavLink to="/dashboard/earnings">
-                    💰
+                    <RiMoneyDollarCircleFill className="text-green-500"/>
                     <span className=" is-drawer-close:hidden">Earnings</span>
                   </NavLink>
                 </li>
@@ -272,27 +279,27 @@ const DashboardDrawer = ({ children }) => {
             {/* ===== ADMIN ===== */}
             {role === "admin" && (
               <>
-                <li className="menu-title  is-drawer-close:hidden">
+                <li className="menu-title t-accent rounded-sm is-drawer-close:hidden">
                   <span>Admin Panel</span>
                 </li>
 
                 <li>
                   <NavLink to="/dashboard/manage-users">
-                    <IconUsers />
+                    <MdManageAccounts />
                     <span className=" is-drawer-close:hidden">Manage Users</span>
                   </NavLink>
                 </li>
 
                 <li>
                   <NavLink to="/dashboard/manage-meals">
-                    <IconMeals />
+                    <GiMeal /> 
                     <span className=" is-drawer-close:hidden">Manage Meals</span>
                   </NavLink>
                 </li>
 
                 <li>
                   <NavLink to="/dashboard/manage-orders">
-                    <IconOrders />
+                    <TbPackage />
                     <span className=" is-drawer-close:hidden">
                       Manage Orders
                     </span>
