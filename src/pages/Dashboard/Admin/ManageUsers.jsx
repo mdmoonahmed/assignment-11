@@ -45,13 +45,13 @@ const ManageUsers = () => {
     if (!confirm.isConfirmed) return;
 
     try {
-      MySwal.fire({ title: "Updating...", didOpen: () => MySwal.showLoading(), allowOutsideClick: false });
+      MySwal.fire({ theme:'dark', title: "Updating...", didOpen: () => MySwal.showLoading(), allowOutsideClick: false });
 
       // call server route to update status
       const res = await api.patch(`/users/${user._id}/status`, { status: "fraud" });
 
       MySwal.close();
-      await MySwal.fire("Success", "User marked as fraud.", "success");
+      await MySwal.fire({ theme:'dark', title:"Success", text:"User marked as fraud."});
 
       // refresh users list
       qc.invalidateQueries({ queryKey: ["admin-users"] });
