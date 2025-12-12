@@ -7,10 +7,12 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Loading from "../../../components/Loader/Loader";
 import { GoDotFill } from "react-icons/go";
+import useTitle from "../../../Hooks/useTitles";
 
 const MySwal = withReactContent(Swal);
 
 const MyProfile = () => {
+  useTitle('My Profile | ChefHut')
   const { user } = useAuth();
   const api = useAxiosSecure();
   const qc = useQueryClient();

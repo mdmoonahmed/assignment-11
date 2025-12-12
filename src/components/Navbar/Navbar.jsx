@@ -13,11 +13,10 @@ const getLinkStyle = ({ isActive }) => {
 };
 
 const Navbar = () => {
-  const { user, signOutUser } = useAuth();
+  const { user, signOutUser,loading } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
-  console.log(user);
 
   const handleLogIn = () => navigate("/login");
   const handleLogOut = () => {
